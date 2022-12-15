@@ -99,8 +99,9 @@ def solve(board, step = False):
     return False
 
 
-print_board(board)
-solve(board,step=True)
-print("Solve board")
-print_board(board)
+
+#print_board(board)
+#solve(board,step=True)
+#print("Solve board")
+#print_board(board)
 

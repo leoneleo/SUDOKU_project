@@ -1,1 +1,1 @@
-Requirements and libraries for this project
+pygame-2.1.2
