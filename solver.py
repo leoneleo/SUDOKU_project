@@ -74,10 +74,14 @@ def valid (board, num, pos):
     
     return True
 
-def solve(board):
+def solve(board, step = False):
     """
     creating solve function using recursive 
     """
+    if step:
+        print( 'print Board being solved')
+        print_board(board)
+        print( 'next step \n')
     find = find_empty(board)
     
     if not find: #if find does not find a empty position
@@ -89,14 +93,14 @@ def solve(board):
     for i in range(1,10): # 1 to 9 including them
         if valid(board, i, (row,col)):
             board[row][col] = i
-            if solve (board):
+            if solve (board, step):
                 return True
             board[row][col]=0
     return False
 
 
 print_board(board)
-solve(board)
+solve(board,step=True)
 print("Solve board")
 print_board(board)
 
