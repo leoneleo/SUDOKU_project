@@ -46,6 +46,7 @@ def find_empty(board):
         for j in range(len(board[0])):
             if board[i][j]==0:
                 return (i,j) # row, column
+    return None
 
 
 def valid (board, num, pos):
@@ -68,5 +69,34 @@ def valid (board, num, pos):
     box_y= pos[0]//3
     for i in range(box_y*3, box_y*3+3):
         for j in range(box_x*3, box_x*3+3):
-            if board[i][j]==num:
+            if board[i][j]==num and (i,j)!=pos: # see if the number is already on the box (not counting the posistion 'pos')
                 return False
+    
+    return True
+
+def solve(board):
+    """
+    creating solve function using recursive 
+    """
+    find = find_empty(board)
+    
+    if not find: #if find does not find a empty position
+        return True 
+
+    else:
+        row,col=find
+    
+    for i in range(1,10): # 1 to 9 including them
+        if valid(board, i, (row,col)):
+            board[row][col] = i
+            if solve (board):
+                return True
+            board[row][col]=0
+    return False
+
+
+print_board(board)
+solve(board)
+print("Solve board")
+print_board(board)
+
